@@ -103,7 +103,8 @@ static void spawnEnemies() {
         memset(enemy, 0, sizeof(Entity));
         enemy->texture = enemyTexture;
         SDL_QueryTexture(
-                enemy->texture, NULL, NULL, &enemy->w, &enemy->h
+                enemy->texture, NULL, NULL,
+                &enemy->w, &enemy->h
         );
         initEnemy(enemy);
         enemySpawnTimer = randBd(25, 75);

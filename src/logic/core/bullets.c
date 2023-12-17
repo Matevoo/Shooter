@@ -46,7 +46,8 @@ void fireEnemyBullet(Entity *entity) {
                 entity->pos.x, entity->pos.y,
                 &bullet->pos.dx, &bullet->pos.dy
         );
-        bullet->pos.dx *= ALIEN_BULLET_SPEED, bullet->pos.dy *= ALIEN_BULLET_SPEED;
+        bullet->pos.dx *= ALIEN_BULLET_SPEED,
+        bullet->pos.dy *= ALIEN_BULLET_SPEED;
     } else if (entity->fireType == STRAIGHT) {
         bullet->pos.dx = -ALIEN_BULLET_SPEED;
     }

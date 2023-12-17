@@ -1,6 +1,7 @@
 #ifndef BASE_H
 #define BASE_H
-#include "entities.h"
+#include "entity.h"
+#include "effect.h"
 
 typedef struct {
     void (*logic)(void);

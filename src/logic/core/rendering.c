@@ -5,20 +5,24 @@ extern App app;
 extern Core core;
 extern Entity *player;
 
+void renderEntities(const Entity* head) {
+    const Entity* entity = head;
+    while (entity != NULL) {
+        renderTexture(entity->texture, entity->pos.x, entity->pos.y);
+        entity = entity->next;
+    }
+}
+
 /* FIGHTERS */
 
 void renderFighters() {
-    for (const Entity *entity = core.fighterHead.next; entity != NULL; entity = entity->next) {
-        renderTexture(entity->texture, entity->pos.x, entity->pos.y);
-    }
+    renderEntities(core.fighterHead.next);
 }
 
 /* BULLETS */
 
 void renderBullets() {
-    for (const Entity *bullet = core.bulletHead.next; bullet != NULL; bullet = bullet->next) {
-        renderTexture(bullet->texture, bullet->pos.x, bullet->pos.y);
-    }
+    renderEntities(core.bulletHead.next);
 }
 
 /* DEBRIS */
@@ -60,9 +64,7 @@ void renderExplosions() {
         SDL_SetTextureColorMod(
                 explosionTexture, explosion->r, explosion->g, explosion->b
         );
-        SDL_SetTextureAlphaMod(
-                explosionTexture, explosion->a
-        );
+        SDL_SetTextureAlphaMod(explosionTexture, explosion->a);
         renderTexture(explosionTexture, explosion->pos.x, explosion->pos.y);
     }
     SDL_SetRenderDrawBlendMode(app.renderer, SDL_BLENDMODE_NONE);
